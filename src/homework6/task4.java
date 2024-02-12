@@ -13,7 +13,7 @@ public class task4 {
             dirs.mkdir();
         }
         for (int i = 1; i <= 100; i++) {
-            File file = new File( "src/homework6/txt_files" + i + ".txt");
+             File file = new File( dirs, + i + ".txt");
             try (FileWriter writer = new FileWriter(file)) {
                 int randomLength = new Random().nextInt(574);
                 String text = getTextFromFile();
@@ -23,7 +23,7 @@ public class task4 {
                 System.out.println(e.getMessage());
             }
         }
-        File resultFile = new File("src/homework6/txt_files/result.txt");
+        File resultFile = new File(dirs, "resultFile");
         try (FileWriter writer = new FileWriter(resultFile)) {
             for (File file : dirs.listFiles()) {
                 if (file.isFile()) {
@@ -37,7 +37,7 @@ public class task4 {
 
     private static String getTextFromFile() {
         StringBuilder stringBuilder = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/homework6/txt_files"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/homework6/exampleCopyFile.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 stringBuilder.append(line).append("\n");
